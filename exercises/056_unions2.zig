@@ -32,7 +32,7 @@ const std = @import("std");
 
 const InsectStat = enum { flowers_visited, still_alive };
 
-const Insect = union(InsectStat) {
+const Insect = union(InsectStat) { // passing the enum to the union
     flowers_visited: u16,
     still_alive: bool,
 };
@@ -44,14 +44,14 @@ pub fn main() void {
     std.debug.print("Insect report! ", .{});
 
     // Could it really be as simple as just passing the union?
-    printInsect(???);
-    printInsect(???);
+    printInsect(ant);
+    printInsect(bee);
 
     std.debug.print("\n", .{});
 }
 
-fn printInsect(insect: Insect) void {
-    switch (???) {
+fn printInsect(insect: Insect) void { // look at the funciton. Passes "insect" of type (Union) "Insect"
+    switch (insect) {
         .still_alive => |a| std.debug.print("Ant alive is: {}. ", .{a}),
         .flowers_visited => |f| std.debug.print("Bee visited {} flowers. ", .{f}),
     }

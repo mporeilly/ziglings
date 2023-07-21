@@ -15,7 +15,7 @@
 //
 const std = @import("std");
 
-const Insect = union(InsectStat) {
+const Insect = union(enum) { // "enum" in place of the tag type.
     flowers_visited: u16,
     still_alive: bool,
 };
